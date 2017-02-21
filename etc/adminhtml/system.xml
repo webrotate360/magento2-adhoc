@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="webrotate360_tab" translate="label" sortOrder="500">
+            <label>WebRotate 360 Product Viewer</label>
+        </tab>
+        <section id="webrotate360adhoc" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Ad-hoc</label>
+            <tab>webrotate360_tab</tab>
+            <resource>WebRotate360_ProductViewerAdHoc::module</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="enabled" translate="label" type="select" sortOrder="8" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Integration</label>
+                    <comment><![CDATA[Temporary disable or enable this module.]]></comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="embedded" translate="label" type="select" sortOrder="9" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Embed In Place</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[If set to No, the viewer doesn't embed inside the page placeholder. Instead, a small thumbnail graphic is inserted inside the placeholder which will then activate a popup (lightbox) with a 360 view on click.]]></comment>
+                </field>
+                <field id="placeholder" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Page Placeholder (id or class)</label>
+                    <comment><![CDATA[Any existing HTML element on your product page where the ad-hoc integration will embed (e.g, .product-img-box or can be element's #id).]]></comment>
+                </field>
+                <field id="viewer_width" translate="label" type="text" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Viewer Width (px or %)</label>
+                    <comment><![CDATA[Viewer width in pixel or %. When Embed In Place is set to No, use pixel dimensions.]]></comment>
+                </field>
+                <field id="viewer_height" translate="label" type="text" sortOrder="12" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Viewer Height (px)</label>
+                    <comment><![CDATA[Viewer height in pixel.]]></comment>
+                </field>
+                <field id="base_width" translate="label" type="text" sortOrder="13" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Base Width (px)</label>
+                    <comment><![CDATA[Original viewer width in pixel. If specified, this forces the viewer to scale its height relative to your original viewer width (Base Width). This setting only applies when viewer width is relative (%) which is not supported when Embed In Place is set to No.]]></comment>
+                </field>
+                <field id="min_height" translate="label" type="text" sortOrder="14" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Minimum Height (px)</label>
+                    <comment><![CDATA[If Base Width is configured, this is a minimum viewer height in pixel (e.g 300px).]]></comment>
+                </field>
+                <field id="viewer_skin" translate="label" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Viewer Skin</label>
+                    <comment><![CDATA[Viewer skin.]]></comment>
+                    <source_model>WebRotate360\ProductViewerAdHoc\Model\Config\Source\ViewerSkin</source_model>
+                </field>
+                <field id="popup_mode" translate="label" type="select" sortOrder="18" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Popup Mode</label>
+                    <comment><![CDATA[Popup presentation mode.]]></comment>
+                    <source_model>WebRotate360\ProductViewerAdHoc\Model\Config\Source\PopupMode</source_model>
+                </field>
+                <field id="pretty_theme" translate="label" type="select" sortOrder="18" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Popup Skin</label>
+                    <comment><![CDATA[Lightbox popup skin.]]></comment>
+                    <source_model>WebRotate360\ProductViewerAdHoc\Model\Config\Source\PopupSkin</source_model>
+                </field>
+                <field id="popup_icon" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Popup Thumbnail URL</label>
+                    <comment><![CDATA[Alternative location of the popup thumbnail graphic (e.g PNG or JPG) that activates the lightbox popup when clicked. Only applies when Embed In Place is set to No.]]></comment>
+                </field>
+            </group>
+            <group id="advanced" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Advanced</label>
+                <field id="use_analytics" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Use Analytics (PRO)</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[If Google Analytics is integrated in your store, this enables tracking of the viewer analytics events under your Google Analytics Dashboard (PRO and Enterprise).]]></comment>
+                </field>
+                <field id="api_callback" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>API Callback</label>
+                    <comment><![CDATA[To integrate with viewer API, enter the name of your JavaScript callback. The callback receives two parameters, e.g rotatorCallback(apiObj, isFullScreen). Only works when Embed In Place is set to Yes.]]></comment>
+                </field>
+                <field id="master_config" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Master Config URL (PRO)</label>
+                    <comment><![CDATA[Master Config optionally allows having a single viewer (xml) configuration file for all 360 views in you store and only supply a URL path to the images folder of each product via Root Path attribute. Root Path can point to an external server, CDN, etc. Root Path URL is entered using a different product attribute with the attribute code set to webrotate_root.]]></comment>
+                </field>
+                <field id="license" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>License URL (PRO)</label>
+                    <comment><![CDATA[URL of license.lic on this server. The file is provided upon <a href="http://www.webrotate360.com/360-product-viewer.html" target="_blank">purchase</a>. Use relative URL if your website doesn't always redirect to www (or no www).]]></comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
