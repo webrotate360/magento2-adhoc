@@ -2,10 +2,10 @@
   "name": "webrotate360/module-product-viewer-adhoc",
   "description": "WebRotate 360 Product Viewer Ad-hoc Integration for Magento 2. This extension allows integrating embedded or popup 360-degree or 3D product views in place of any element on a product page in Magento. The product views can be created using our free publishing software available on webrotate360.com.",
   "require": {
-    "magento/framework": "100.*"
+    "magento/framework": ">=100.0.0"
   },
   "type": "magento2-module",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "license": [
     "MIT"
   ],
