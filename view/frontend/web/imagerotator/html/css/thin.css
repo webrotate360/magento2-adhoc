@@ -25,11 +25,67 @@
     background:inherit !important;
     max-width:none !important;
     font-family:Tahoma, sans-serif;
+    cursor:pointer !important;
 }
 
 .wr360_player .container::before
 {
     display:none !important;
+}
+
+.wr360_player .container .spinner_hint
+{
+    width:100%;
+    height:100%;
+    z-index:11;
+    position:absolute;
+    left:0;
+    top:0;
+    display:none;
+    cursor:pointer;
+}
+
+.wr360_player .container .spinner_hint .spinner_hint_aligner
+{
+    position:absolute;
+    bottom:20px;
+    left:0;
+    width:100%;
+    text-align:center;
+    z-index:1;
+}
+
+.wr360_player .container .spinner_hint .spinner_hint_item
+{
+    padding:7px 18px 7px 18px;
+    line-height:14px;
+    color:#696969;
+    font-size:11px;
+    background:rgba(240, 240, 240, 0.88);
+    border-radius:0;
+    margin:0 auto 0 auto;
+    max-width:300px;
+    font-family:Tahoma,Helvetica,Sans-Serif;
+    opacity:0;
+    display:inline-block;
+    transition:0.2s ease;
+}
+
+@-moz-document url-prefix()
+{
+    .wr360_player .container .spinner_hint .spinner_hint_item
+    {
+        padding-bottom:8px;
+    }
+}
+
+.wr360_player .container .spinner_hint:hover .spinner_hint_item
+{
+    background:rgba(225, 225, 225, 0.78);
+    color:#555;
+    transition:0.3s ease;
+    padding-left:22px;
+    padding-right:22px;
 }
 
 .wr360_player img
@@ -39,9 +95,57 @@
     border:none !important;
     box-shadow:none !important;
     cursor:pointer !important;
+    image-rendering:-webkit-optimize-contrast;
 }
 
-.wr360_player .container .panning2,
+.wr360_player .arrow_zoom_cursor,
+.wr360_player .arrow_zoom_cursor > img
+{
+    cursor:url(../img/basic/pointer-zoom-in.svg), zoom-in !important;
+}
+
+.wr360_player .arrow_zoom_cursor.container_zoomed,
+.wr360_player .arrow_zoom_cursor.container_zoomed > img
+{
+    cursor:url(../img/basic/pointer-zoom-out.svg), zoom-out !important;
+}
+
+.wr360_player .arrow_zoom_cursor.container_zoomoff,
+.wr360_player .arrow_zoom_cursor.container_zoomoff > img
+{
+    cursor:url(../img/basic/pointer-zoom-off.svg), pointer !important;
+}
+
+.wr360_player .zoom_cursor,
+.wr360_player .zoom_cursor > img
+{
+    cursor:zoom-in !important;
+}
+
+.wr360_player .zoom_cursor.container_zoomed,
+.wr360_player .zoom_cursor.container_zoomed > img
+{
+    cursor:zoom-out !important;
+}
+
+.wr360_player .zoom_cursor.container_zoomoff,
+.wr360_player .zoom_cursor.container_zoomoff > img
+{
+    cursor:pointer !important;
+}
+
+/* Desktop Safari doesn't work well with -webkit-optimize-contrast so apply this Safari only hack */
+@media not all and (min-resolution:.001dpcm)
+{
+    @media
+    {
+        .wr360_player img
+		{
+            image-rendering:auto;
+        }
+    }
+}
+
 .wr360_player .container .panning
 {
     position:absolute;
@@ -50,7 +154,8 @@
     background-size:100% 100%;
     background-repeat:no-repeat;
     background-position:center;
-    z-index:2002;
+    z-index:1;
+    display:none;
 }
 
 .wr360_player .container .theme_panel_back
@@ -60,23 +165,29 @@
     bottom:0;
     left:0;
     height:28px;
-    z-index:2500;
+    z-index:2;
 }
 
 .wr360_player .container .theme_panel
 {
     position:absolute;
     width:100%;
-    bottom:0px;
+    bottom:0;
     left:0;
     height:28px;
-    z-index:2501;
+    z-index:3;
+    cursor:pointer !important;
 }
 
 .wr360_player .container .theme_header
 {
     height:20px;
-    z-index:2500;
+    z-index:2;
+    margin:3px 0 0 0;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
     font-family:Tahoma,Helvetica,Sans-Serif;
 }
 
@@ -89,7 +200,6 @@
 .wr360_player .container .theme_header .progress_wrap .progress_bar_anim_fs
 {
     margin:10px 0 0 15px;
-    line-height:28px;
     height:28px;
     -webkit-user-select:none;
     -moz-user-select:none;
@@ -101,7 +211,6 @@
 .wr360_player .container .theme_header .progress_wrap .progress_bar_anim
 {
     margin:1px 0 0 6px;
-    line-height:16px;
     height:16px;
     -webkit-user-select:none;
     -moz-user-select:none;
@@ -169,8 +278,9 @@
 .wr360_player .container .theme_header .progress_wrap .progress_bar_anim span.percentnums
 {
     font-size:8px;
+    line-height:16px;
+    height:16px;
     width:25px;
-    display:block;
     float:left;
     color:#999;
     margin:0 0 0 4px;
@@ -180,12 +290,22 @@
 .wr360_player .container .theme_header .progress_wrap .progress_bar_anim_fs span.percentnums
 {
     font-size:11px;
+    line-height:28px;
+    height:28px;
     width:25px;
-    display:block;
     float:left;
     color:#999;
     margin:0 0 0 6px;
     display:none;
+}
+
+@-moz-document url-prefix()
+{
+    .wr360_player .container .theme_header .progress_wrap .progress_bar_anim span.percentnums,
+    .wr360_player .container .theme_header .progress_wrap .progress_bar_anim_fs span.percentnums
+    {
+        margin-top: -1px;
+    }
 }
 
 @-webkit-keyframes wr360_progress_delay
@@ -198,7 +318,7 @@
     20%
     {
         -webkit-transform:scaleY(1.0);
-        opacity: 1;
+        opacity:1;
     }
 }
 
@@ -213,7 +333,7 @@
     {
         transform:scaleY(1.0);
         -webkit-transform: scaleY(1.0);
-        opacity: 1;
+        opacity:1;
     }
 }
 
@@ -292,6 +412,13 @@
     background:url(../img/thin/zoomin.svg) no-repeat 0 0;
 }
 
+.wr360_player .container_zoomoff .theme_panel .toolbar a.zoomin_button,
+.wr360_player .container_zoomoff .theme_panel .toolbar a.zoomin_button:hover
+{
+    cursor:default;
+    opacity:0.4;
+}
+
 .wr360_player .container .theme_panel .toolbar a.zoomout_button
 {
     background:url(../img/thin/zoomout.svg) no-repeat 0 0;
@@ -319,7 +446,7 @@
     height:50px;
     top:20px;
     right:23px;
-    z-index:5000;
+    z-index:10;
     position:absolute;
     cursor:pointer;
     display:block;
@@ -335,12 +462,21 @@
 
 .wr360_player .container .hotspot_indicator
 {
-    z-index:2999;
+    z-index:4;
+    cursor:pointer;
+}
+
+.wr360_player .container .indicator_effect_scale_up
+{
+    -webkit-transform:scale(0, 0);
+    transform:scale(0, 0);
+    -webkit-animation:wr360_effect_scale_up .3s cubic-bezier(.22, .02, .13, .99) forwards;
+    animation:wr360_effect_scale_up .3s cubic-bezier(.22, .02, .13, .99) forwards;
 }
 
 .wr360_player .container .hotspot_indicator_hidden
 {
-    display: none !important;
+    display:none !important;
 }
 
 .wr360_player .container .position_rollover
@@ -349,7 +485,8 @@
     left:0;
     top:0;
     visibility:hidden;
-    z-index:15005;
+    z-index:15;
+    cursor:pointer;
 }
 
 .wr360_player .container .position_rollover > div
@@ -359,7 +496,7 @@
 
 .wr360_player .container .lightbox_rollover
 {
-    z-index:15006;
+    z-index:18;
     width:100%;
     height:100%;
     background-color:rgba(0, 0, 0, 1);
@@ -378,7 +515,7 @@
 .wr360_player .container .lightbox_rollover .closelbox
 {
     position:absolute;
-    background:url(../img/retina/lightbox_close.svg) 7px 7px no-repeat;
+    background:url(../img/thin/lightbox_close.svg) 7px 7px no-repeat;
     right:15px;
     top:15px;
     width:28px;
@@ -388,7 +525,7 @@
 
 .wr360_player .container .lightbox_rollover .closelbox:hover
 {
-    opacity: 0.8;
+    opacity:0.8;
 }
 
 .wr360_player .container .lightbox_rollover .img_wrap
@@ -427,4 +564,14 @@
     padding:15px 20px 19px 20px;
     line-height:19px;
     font-size:16px;
+}
+
+@-webkit-keyframes wr360_effect_scale_up
+{
+    100% { -webkit-transform:scale(1, 1); }
+}
+
+@keyframes wr360_effect_scale_up
+{
+    100% { transform:scale(1, 1); }
 }

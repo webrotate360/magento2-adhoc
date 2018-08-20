@@ -87,7 +87,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     {
         $value = $this->getPopupIcon();
         if (empty($value))
-            return $this->_assetRepo->getUrl('WebRotate360_ProductViewerAdHoc::360thumb.png');
+            return $this->_assetRepo->getUrl('WebRotate360_ProductViewerAdHoc::360thumb.svg');
 
         return $value;
     }
@@ -199,6 +199,9 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
 
     public function getLicense()
     {
-        return $this->scopeConfig->getValue(self::XML_PATH_LICENSE, \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+        $licPath = $this->scopeConfig->getValue(self::XML_PATH_LICENSE, \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+        if (!empty($licPath))
+            return $licPath;
+        return $this->_assetRepo->getUrl('WebRotate360_ProductViewerAdHoc::imagerotator/license.lic');
     }
 }

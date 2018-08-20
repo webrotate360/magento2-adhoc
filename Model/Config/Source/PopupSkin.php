@@ -8,8 +8,18 @@ class PopupSkin implements \Magento\Framework\Option\ArrayInterface
     {
         return array(
             array(
-                'value' => 'default',
-                'label' => 'Default'
+                'value' => 'light_clean',
+                'label' => 'Light Clean'
+            ),
+
+            array(
+                'value' => 'dark_clean',
+                'label' => 'Dark Clean'
+            ),
+
+            array(
+                'value' => 'pp_default',
+                'label' => 'PrettyPhoto Default'
             ),
 
             array(

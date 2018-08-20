@@ -9,7 +9,7 @@
 	
 	$.fn.prettyPhoto = function(pp_settings) {
 		pp_settings = jQuery.extend({
-			hook: 'rel', /* the attribute tag to use for prettyPhoto hooks. default: 'rel'. For HTML5, use "data-rel" or similar. */
+			hook: 'data-rel', /* the attribute tag to use for prettyPhoto hooks. default: 'rel'. For HTML5, use "data-rel" or similar. */
 			animation_speed: 'fast', /* fast/slow/normal */
 			ajaxcallback: function() {},
 			slideshow: 0, /* false OR interval time in ms */
@@ -141,7 +141,9 @@
 			
 			if(settings.theme == 'pp_default')
                 settings.horizontal_padding = 13;
-			
+			else if(settings.theme == 'light_clean' || settings.theme == 'dark_clean')
+				settings.horizontal_padding = 6;
+
 			// Find out if the picture is part of a set
 			theRel = $(this).attr(settings.hook);
 			galleryRegExp = /\[(?:.*)\]/;
@@ -206,7 +208,12 @@
 			$pp_overlay.show().fadeTo(settings.animation_speed,settings.opacity);
 
 			// Display the current position
-			$pp_pic_holder.find('.currentTextHolder').text((set_position+1) + settings.counter_separator_label + $(pp_images).size());
+			// $pp_pic_holder.find('.currentTextHolder').text((set_position+1) + settings.counter_separator_label + $(pp_images).size());
+			var currTextHolder = $pp_pic_holder.find('.currentTextHolder');
+			currTextHolder.text((set_position+1) + settings.counter_separator_label + $(pp_images).size());
+			var description = pp_descriptions[set_position];
+			if (description && description.length > 0)
+				currTextHolder.append('<span class="extraInfo"> &ndash;&nbsp; ' + pp_descriptions[set_position] + '</span>');
 
 			// Set the description
 			if(typeof pp_descriptions[set_position] != 'undefined' && pp_descriptions[set_position] != ""){

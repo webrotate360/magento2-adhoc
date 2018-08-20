@@ -1,6 +1,5 @@
 <?php
     // TODO: add forward slash to the root path at the end if not present
-    // TODO: design better 360 icon?
     // TODO: add graphics path in admin and default it to external indicator folder with old and new indicators
 
     $helper = $this->helper('WebRotate360\ProductViewerAdHoc\Helper\Data');
@@ -72,7 +71,7 @@
                                         $helper->getViewerHeight(),
                                         urlencode($helper->getLicense()),
                                         urlencode($helper->getGraphicsPathUrl()),
-                                        $helper->isUseAnalytics() ? print("true") : print("false"),
+                                        $helper->isUseAnalytics() ? print("1") : print("0"),
                                         $helper->getViewerWidth(),
                                         $helper->getViewerHeight());
                                 ?>

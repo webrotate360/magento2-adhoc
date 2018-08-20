@@ -31,6 +31,16 @@ class ViewerSkin implements \Magento\Framework\Option\ArrayInterface
                'value' => 'empty',
                'label' => 'empty'
            ),
+
+           array(
+               'value' => 'zoom_light',
+               'label' => 'zoom light'
+           ),
+
+           array(
+              'value' => 'zoom_dark',
+              'label' => 'zoom dark'
+          ),
        );
     }
 }

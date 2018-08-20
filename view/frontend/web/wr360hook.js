@@ -26,7 +26,7 @@ function WR360AdhocEmbedInitialize(cfg) {
 
     if (cfg.apiCallback.length > 0) {
         var fn = window[cfg.apiCallback];
-        if (typeof (fn === "function"))
+        if (typeof fn === "function")
             ir.settings.apiReadyCallback = fn;
     }
 
@@ -56,7 +56,7 @@ function WR360AdhocFullScreenClickInitialize(cfg) {
 
     if (cfg.apiCallback.length > 0) {
         var fn = window[cfg.apiCallback];
-        if (typeof (fn === "function"))
+        if (typeof fn === "function")
             ir.settings.apiReadyCallback = fn;
     }
 
@@ -68,18 +68,19 @@ function WR360AdhocPopupInitialize(placeholder, framePath, thumbPath, prettyThem
     if (imageBlock.length <= 0)
         return;
 
-    var newHtml = "<a href='" + framePath + "'" + "rel='prettyPhoto'><img src='" + thumbPath + "'/></a>";
+    var newHtml = "<a href='" + framePath + "'" + "data-rel='prettyPhoto'><img src='" + thumbPath + "'/></a>";
     imageBlock.html(newHtml);
     imageBlock.css("visibility", "visible");
 
-    if (prettyTheme == "default") {
+    /*
+    if (prettyTheme == "pp_default") {
         jQuery("a[rel^='prettyPhoto']").prettyPhoto( {
             deeplinking: false,
             animation_speed: 0
         });
     }
-    else {
-        jQuery("a[rel^='prettyPhoto']").prettyPhoto( {
+    else */ {
+        jQuery("a[data-rel^='prettyPhoto']").prettyPhoto( {
             theme: prettyTheme,
             deeplinking: false,
             animation_speed: 0
