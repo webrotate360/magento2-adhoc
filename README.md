@@ -1,6 +1,6 @@
 # Overview
 
-WebRotate 360 Product Viewer Ad-hoc Integration for Magento 2 allows integrating embedded or popup 360-degree or 3D product views in place of any element on a product page in Magento. The product views can be created using our free publishing software available on [webrotate360.com](http://www.webrotate360.com/products/webrotate-360-product-viewer.aspx).
+WebRotate 360 Product Viewer Ad-hoc Integration for Magento 2 allows integrating embedded or popup 360-degree or 3D product views in place of any element on product pages in Magento 2. The product views can be created using our free publishing software available on [webrotate360.com](http://www.webrotate360.com/products/webrotate-360-product-viewer.aspx). Note that WebRotate 360 integration for the standard Magento 2 gallery is available as a [separate Magento 2 extension](https://github.com/webrotate360/magento2-standard). 
 
 
 ## About WebRotate 360
@@ -10,12 +10,12 @@ WebRotate 360 are specialists in software and tools for 360 product photography,
 
 ## Requirements
 
-This extension supports Magento Community and Enterprise version 2.0.0 and greater. M1 extension for previous releases is available on [Magento Connect](https://www.magentocommerce.com/magento-connect/webrotate-360-product-viewer-with-prettyphoto-lightbox-image-gallery.html).
+This extension supports both Magento Community and Enterprise editions. M1 extension for previous releases is available on [Magento Marketplace](https://marketplace.magento.com/webrotate360-webrotate360-catalog.html).
 
 
 ## Install via Composer
 
-_Please backup your Magento 2 setup before proceeding with the installation._
+Please backup your Magento setup before proceeding with the installation.
 
 If you have Composer installed, run these Magento CLI commands from the root of your Magneto installation:
 ```shell
@@ -26,9 +26,9 @@ php bin/magento cache:flush
 ```
 
 
-##Install from GitHub
+## Install from GitHub
 
-_Please backup your Magento 2 setup before proceeding with the installation._
+Please backup your Magento setup before proceeding with the installation.
 
 Download zip package by clicking "Clone or Download" and selecting Download ZIP at the top of this page. 
 
@@ -43,7 +43,7 @@ php bin/magento cache:flush
 ```
 
 
-##Configure and test
+## Configure and test
 
 Select Stores > Configuration and expand WebRotate 360 Product Viewer > Ad-hoc in your Magento admin. 
 
