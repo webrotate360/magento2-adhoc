@@ -10,18 +10,22 @@
     $rootPath   = $helper->getWebrotateRootUrl();
     $configPath = $helper->getWebrotatePath();
 
-    if (empty($configPath))
-    {
+    if (empty($configPath)) {
         $configPath = $helper->getMasterConfigUrl();
         if (!empty($configPath))
             $isMasterMode = true;
     }
 
     $isAdhocOn = (!isset($isMasterMode) && !empty($configPath)) || (isset($isMasterMode) && !empty($rootPath));
+
+    $configBaseUrl = $helper->getBaseUrl();
+    if ($helper->getUseMediaUrlConfig() === true) {
+        $configBaseUrl = $helper->getMediaUrl();
+    }
 ?>
 
 <?php if ($isAdhocOn): ?>
-    <?php $configPath = $helper->getBaseUrl() . $configPath; ?>
+    <?php $configPath = strpos($configPath, 'https://') === 0 ? $configPath : $configBaseUrl . $configPath; ?>
     <?php if ($helper->isEmbedded()): ?>
         <link  rel="stylesheet" type="text/css" href="<?php echo $helper->getViewerSkinUrl() ?>" />
         <style type="text/css">

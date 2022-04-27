@@ -59,6 +59,11 @@
                     <label>Popup Thumbnail URL</label>
                     <comment><![CDATA[Alternative location of the popup thumbnail graphic (e.g PNG or JPG) that activates the lightbox popup when clicked. Only applies when Embed In Place is set to No.]]></comment>
                 </field>
+                <field id="media_url_config" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Use Media URL for Config Load </label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[360 view config can be a relative or absolute URL pointing to an XML file on your Magento server or an external server such as WebRotate 360's <a href="https://www.webrotate360.com/services/pixriot.aspx" target="_blank">PixRiot</a>. Set to Yes to load the XML file relative to Magento's media folder instead.]]></comment>
+                </field>
             </group>
             <group id="advanced" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Advanced</label>
@@ -70,6 +75,10 @@
                 <field id="api_callback" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>API Callback</label>
                     <comment><![CDATA[To integrate with viewer API, enter the name of your JavaScript callback. The callback receives two parameters, e.g rotatorCallback(apiObj, isFullScreen). Only works when Embed In Place is set to Yes.]]></comment>
+                </field>
+                <field id="graphics_path" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Graphics Path</label>
+                    <comment><![CDATA[To use custom hotspot indicators, you can upload them to a folder of your choice and specify the URL of this folder here.]]></comment>
                 </field>
                 <field id="master_config" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Master Config URL (PRO)</label>

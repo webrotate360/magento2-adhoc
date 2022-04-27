@@ -2,6 +2,7 @@
 
 namespace WebRotate360\ProductViewerAdHoc\Helper;
 
+
 class Data extends \Magento\Framework\App\Helper\AbstractHelper
 {
     const XML_PATH_ENABLED          = 'webrotate360adhoc/general/enabled';
@@ -15,10 +16,12 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     const XML_PATH_PRETTY_THEME     = 'webrotate360adhoc/general/pretty_theme';
     const XML_PATH_POPUP_MODE       = 'webrotate360adhoc/general/popup_mode';
     const XML_PATH_POPUP_ICON       = 'webrotate360adhoc/general/popup_icon';
+    const XML_PATH_MEDIA_URL        = 'webrotate360adhoc/general/media_url_config';
     const XML_PATH_USE_ANALYTICS    = 'webrotate360adhoc/advanced/use_analytics';
     const XML_PATH_API_CALLBACK     = 'webrotate360adhoc/advanced/api_callback';
     const XML_PATH_MASTER_CONFIG    = 'webrotate360adhoc/advanced/master_config';
     const XML_PATH_LICENSE          = 'webrotate360adhoc/advanced/license';
+    const XML_PATH_GRAPHICS_PATH    = 'webrotate360adhoc/advanced/graphics_path';
 
     const POPUP_MODE_LIGHTBOX       = 'LIGHTBOX';
     const POPUP_MODE_FULLSCREEN     = 'FULLSCREEN';
@@ -75,7 +78,22 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
 
     public function getGraphicsPathUrl()
     {
-        return $this->_assetRepo->getUrl('WebRotate360_ProductViewerAdHoc::imagerotator/html/img/' . $this->getViewerSkin());
+        $graphicsPath = $this->scopeConfig->getValue(self::XML_PATH_GRAPHICS_PATH, \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+        if (!empty($graphicsPath)) {
+            return $graphicsPath;
+        }
+
+        return $this->_assetRepo->getUrl('WebRotate360_ProductViewerAdHoc::graphics/');
+    }
+
+    public function getUseMediaUrlConfig()
+    {
+        return (bool)$this->scopeConfig->getValue(self::XML_PATH_MEDIA_URL, \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+    }
+
+    public function getMediaUrl()
+    {
+        return $this->_storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
     }
 
     public function getFrameUrl()
