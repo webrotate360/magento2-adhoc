@@ -1,6 +1,6 @@
 # Overview
 
-WebRotate 360 Product Viewer Ad-hoc Integration for Magento 2 allows integrating embedded or popup 360-degree or 3D product views in place of any element on product pages in Magento 2. These product views can be created using our free publishing software available on [webrotate360.com](http://www.webrotate360.com/products/webrotate-360-product-viewer.aspx). Note that WebRotate 360 integration for the standard Magento 2 gallery is available as a [separate Magento 2 extension](https://github.com/webrotate360/magento2-standard). 
+WebRotate 360 Product Viewer Ad-hoc Integration for Magento 2 allows integrating embedded or popup 360-degree or 3D product views in place of any element on product pages in Magento 2. These product views can be created using our free publishing software available on [webrotate360.com](https://www.webrotate360.com/products/webrotate-360-product-viewer.aspx). Note that WebRotate 360 integration for the standard Magento 2 gallery is available as a [separate Magento 2 extension](https://github.com/webrotate360/magento2-standard). 
 
 
 ## About WebRotate 360
@@ -64,7 +64,7 @@ Alternatively, copy "sampleshoe" folder that is installed with the plugin (under
 
 ## Create your own views
 
-Download [WebRotate 360 Product Viewer software](http://www.webrotate360.com/products/webrotate-360-product-viewer.aspx) (SpotEditor) and publish a 360 or a multi-row 3D product view using your images. You may use our sample images located under additional resources in the previous link.
+Download [WebRotate 360 Product Viewer software](https://www.webrotate360.com/products/webrotate-360-product-viewer.aspx) (SpotEditor) and publish a 360 or a multi-row 3D product view using your images. You may use our sample images located under additional resources in the previous link.
 
 FTP upload is available inside the software or you may upload everything manually via FileZilla or a similar client. Consider using our optimized [PixRiot](https://www.webrotate360.com/services/pixriot.aspx) service to host and manage your spins online for unmatched convenience. You only need to upload a single folder located under published/360_assets of your published SpotEditor project for each product view. You may also publish multiple product views into a single 'published' location on your hard-drive and upload all product views at once.
 
