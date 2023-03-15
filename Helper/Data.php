@@ -71,9 +71,9 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
             $this->_currProduct = $this->_objectManager->get('Magento\Framework\Registry')->registry('current_product');
 
         if ($this->_currProduct)
-            return $this->_currProduct->getData('webrotate_root');
+            return (string)$this->_currProduct->getData('webrotate_root');
 
-        return null;
+        return '';
     }
 
     public function getGraphicsPathUrl()
@@ -83,7 +83,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
             return $graphicsPath;
         }
 
-        return $this->_assetRepo->getUrl('WebRotate360_ProductViewerAdHoc::graphics/');
+        return (string)$this->_assetRepo->getUrl('WebRotate360_ProductViewerAdHoc::graphics/');
     }
 
     public function getUseMediaUrlConfig()
@@ -136,7 +136,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         if ($this->isEmbedded())
             return $value;
 
-        return preg_replace("/[^0-9]/", "" , $value);
+        return preg_replace("/[^0-9]/", "" , (string)$value);
     }
 
     public function getViewerHeight()
@@ -145,7 +145,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         if ($this->isEmbedded())
             return $value;
 
-        return preg_replace("/[^0-9]/", "" , $value);
+        return preg_replace("/[^0-9]/", "" , (string)$value);
     }
 
     public function getBaseWidth()
@@ -154,7 +154,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         if (empty($value))
             return 0;
 
-        return preg_replace("/[^0-9]/", "" , $value);
+        return preg_replace("/[^0-9]/", "" , (string)$value);
     }
 
     public function getMinHeight()
@@ -163,7 +163,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         if (empty($value))
             return 0;
 
-        return preg_replace("/[^0-9]/", "" , $value);
+        return preg_replace("/[^0-9]/", "" , (string)$value);
     }
 
     public function getViewerSkin()
@@ -219,7 +219,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     {
         $licPath = $this->scopeConfig->getValue(self::XML_PATH_LICENSE, \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
         if (!empty($licPath))
-            return $licPath;
-        return $this->_assetRepo->getUrl('WebRotate360_ProductViewerAdHoc::imagerotator/license.lic');
+            return (string)$licPath;
+        return (string)$this->_assetRepo->getUrl('WebRotate360_ProductViewerAdHoc::imagerotator/license.lic');
     }
 }
