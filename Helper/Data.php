@@ -57,9 +57,9 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
             $this->_currProduct = $this->_objectManager->get('Magento\Framework\Registry')->registry('current_product');
 
         if ($this->_currProduct)
-            return ltrim($this->_currProduct->getData('webrotate_path'), '/');
+            return ltrim($this->_currProduct->getData('webrotate_path') ?? '', '/');
 
-        return null;
+        return '';
     }
 
     public function getWebrotateRootUrl()
